@@ -10,33 +10,39 @@ interface Experience {
   date: string
   description?: string
   logo?: string
+  role: string
 }
 
 const experiences: Experience[] = [
   {
     title: "Waterloo Aerial Robotics Group",
     date: "Oct 2024 - Present",
-    description: "Enhanced drone image processing and system reliability through bug resolution, pipeline optimization, and automation."
+    description: "Enhanced drone image processing and system reliability through bug resolution, pipeline optimization, and automation.",
+    role: "Software Engineer"
   },
   {
     title: "CS Base",
     date: "Apr 2023 - Aug 2024",
-    description: "Led programming instruction and curriculum development, introducing students to advanced programming concepts."
+    description: "Led programming instruction and curriculum development, introducing students to advanced programming concepts.",
+    role: "Software Engineer"
   },
   {
     title: "First Robotics",
     date: "Nov 2022 - Mar 2023",
-    description: "Taught Java programming, enabling team members to develop and enhance robot functionality."
+    description: "Taught Java programming, enabling team members to develop and enhance robot functionality.",
+    role: "Software Engineer"
   },
   {
     title: "Code 4 Tomorrow",
     date: "July 2023 - Mar 2024",
-    description: "Supported organizational operations and documentation management for collaborative coding initiatives."
+    description: "Supported organizational operations and documentation management for collaborative coding initiatives.",
+    role: "Software Engineer"
   },
   {
     title: "Project Empower",
     date: "Feb 2023 - Mar 2024",
-    description: "Facilitated community outreach by building partnerships and fostering collaboration with external organizations."
+    description: "Facilitated community outreach by building partnerships and fostering collaboration with external organizations.",
+    role: "Software Engineer"
   }
 ]
 
@@ -57,7 +63,8 @@ export function ExperiencesCarousel() {
       <ExperienceCircle
         title={experiences[activeIndex].title}
         date={experiences[activeIndex].date}
-        description={experiences[activeIndex].description} // Add this line
+        description={experiences[activeIndex].description}
+        role={experiences[activeIndex].role}
         size="lg"
         isActive
       />
@@ -71,6 +78,8 @@ export function ExperiencesCarousel() {
             key={exp.title}
             title={exp.title}
             date={exp.date}
+            description={exp.description}
+            role={exp.role}
             position={position}
             totalPositions={experiences.length}
             isActive={isActive}

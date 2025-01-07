@@ -104,6 +104,9 @@ export default function Home() {
             <li>
               <a 
                 href="./Arpan_Roy_Resume.pdf" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              
                 className="px-4 py-2 border border-dashed border-gray-600 text-gray-400 hover:text-white hover:border-white transition-all"
               >
                 Resume
@@ -177,7 +180,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-bold mb-4">Projects</h2>
           <p className="text-gray-400 mb-12">
-            My hobby projects are pretty random—just things that I am interested in him.
+            My hobby projects are pretty random—just things that I am interested in.
           </p>
           
           <div className="grid md:grid-cols-2 gap-6">
