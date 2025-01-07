@@ -103,7 +103,7 @@ export default function Home() {
             </li>
             <li>
               <a 
-                href="https://drive.google.com/file/d/1C4orURZck2Jw-P1NLAgvLHEwm4zsgdnG/view?usp=sharing" 
+                href="./Arpan_Roy_Resume.pdf" 
                 className="px-4 py-2 border border-dashed border-gray-600 text-gray-400 hover:text-white hover:border-white transition-all"
               >
                 Resume
