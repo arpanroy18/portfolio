@@ -24,25 +24,25 @@ const experiences: Experience[] = [
     title: "CS Base",
     date: "Apr 2023 - Aug 2024",
     description: "Led programming instruction and curriculum development, introducing students to advanced programming concepts.",
-    role: "Software Engineer"
+    role: "Lead Programming Teacher"
   },
   {
     title: "First Robotics",
     date: "Nov 2022 - Mar 2023",
     description: "Taught Java programming, enabling team members to develop and enhance robot functionality.",
-    role: "Software Engineer"
+    role: "Programming Teacher"
   },
   {
     title: "Code 4 Tomorrow",
     date: "July 2023 - Mar 2024",
     description: "Supported organizational operations and documentation management for collaborative coding initiatives.",
-    role: "Software Engineer"
+    role: "Documentation Team"
   },
   {
     title: "Project Empower",
     date: "Feb 2023 - Mar 2024",
     description: "Facilitated community outreach by building partnerships and fostering collaboration with external organizations.",
-    role: "Software Engineer"
+    role: "Community Liaison"
   }
 ]
 
