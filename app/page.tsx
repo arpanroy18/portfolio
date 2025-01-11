@@ -115,16 +115,16 @@ export default function Home() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-4 mb-8">
+        <div className="flex items-center justify-center gap-8 mb-8">
           <h1 className="text-8xl font-bold tracking-tight">
             Arpan Roy
           </h1>
-          <div className="relative w-16 h-16">
+          <div className="relative w-32 h-32">
             <Image
-              src="/placeholder.svg?height=64&width=64"
+              src="./portfolio_image.png"
               alt="Avatar"
-              width={64}
-              height={64}
+              width={128}
+              height={128}
               className="rounded-full"
             />
           </div>
