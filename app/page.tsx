@@ -1,17 +1,25 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ProjectCard } from '@/components/project-card'
 import { ExperiencesCarousel } from '@/components/experiences-carousel'
 import { NavBar } from '@/components/nav-bar'
 import { FaGithub, FaLinkedin, FaChevronDown, FaEnvelope } from 'react-icons/fa'
+import { motion } from 'framer-motion'
 
 export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const homeRef = useRef<HTMLDivElement>(null)
   const projectsRef = useRef<HTMLDivElement>(null)
   const experiencesRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    // Simulate loading
+    const timer = setTimeout(() => setIsLoading(false), 1000)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     const canvas = canvasRef.current
@@ -71,8 +79,28 @@ export default function Home() {
     ref?.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  if (isLoading) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-black">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl font-bold text-white"
+        >
+          AR
+        </motion.div>
+      </div>
+    )
+  }
+
   return (
-    <div className="relative">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="relative"
+    >
       <canvas
         ref={canvasRef}
         className="fixed inset-0 -z-10"
@@ -82,40 +110,60 @@ export default function Home() {
       <NavBar onNavigate={scrollToSection} />
       
       {/* Hero Section */}
-      <section ref={homeRef} id="home" className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative">
+      <motion.section 
+        ref={homeRef}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+        id="home" 
+        className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative"
+      >
         <nav className="mb-7">
           <ul className="flex items-center justify-center gap-8">
-            <li>
+            <motion.li
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <button 
                 onClick={() => scrollToSection('projects')}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Projects
               </button>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <button 
                 onClick={() => scrollToSection('experiences')}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 Experiences
               </button>
-            </li>
-            <li>
+            </motion.li>
+            <motion.li
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <a 
                 href="./Arpan_Roy_Resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
-              
                 className="px-4 py-2 border border-dashed border-gray-600 text-gray-400 hover:text-white hover:border-white transition-all"
               >
                 Resume
               </a>
-            </li>
+            </motion.li>
           </ul>
         </nav>
 
-        <div className="flex items-center justify-center gap-8 mb-8">
+        <motion.div 
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="flex items-center justify-center gap-8 mb-8"
+        >
           <h1 className="text-8xl font-bold tracking-tight">
             Arpan Roy
           </h1>
@@ -128,9 +176,14 @@ export default function Home() {
               className="rounded-full"
             />
           </div>
-        </div>
+        </motion.div>
         
-        <div className="space-y-4 max-w-2xl">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          className="space-y-4 max-w-2xl"
+        >
           <p className="text-xl text-gray-300">
             Math @ University of Waterloo
           </p>
@@ -141,47 +194,64 @@ export default function Home() {
             </a>
           </p>
           <div className="flex items-center justify-center gap-6 text-gray-400">
-            <a 
+            <motion.a 
+              whileHover={{ scale: 1.1, color: '#fff' }}
               href="https://github.com/arpanroy18" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
             >
               <FaGithub size={24} />
-            </a>
-            <a 
+            </motion.a>
+            <motion.a 
+              whileHover={{ scale: 1.1, color: '#fff' }}
               href="https://www.linkedin.com/in/arpan-roy18/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="hover:text-white transition-colors"
             >
               <FaLinkedin size={24} />
-            </a>
-            <a 
+            </motion.a>
+            <motion.a 
+              whileHover={{ scale: 1.1, color: '#fff' }}
               href="mailto:arpan_roy46@outlook.com" 
               className="hover:text-white transition-colors"
             >
               <FaEnvelope size={24} />
-            </a>
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Bouncing Arrow */}
-        <div className="absolute bottom-8 animate-bounce cursor-pointer">
-          <FaChevronDown
-            className="h-8 w-8 text-white"
-            onClick={() => scrollToSection('projects')}
-          />
-        </div>
-      </section>
+        <motion.div 
+          animate={{ 
+            y: [0, 10, 0],
+          }}
+          transition={{ 
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className="absolute bottom-8 cursor-pointer"
+          onClick={() => scrollToSection('projects')}
+        >
+          <FaChevronDown className="h-8 w-8 text-white" />
+        </motion.div>
+      </motion.section>
 
       {/* Projects Section */}
       <section ref={projectsRef} id="projects" className="min-h-screen px-4 py-20">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4">Projects</h2>
-          <p className="text-gray-400 mb-12">
-            My hobby projects are pretty random—just things that I am interested in.
-          </p>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-4xl font-bold mb-4">Projects</h2>
+            <p className="text-gray-400 mb-12">
+              My hobby projects are pretty random—just things that I am interested in.
+            </p>
+          </motion.div>
           
           <div className="grid md:grid-cols-2 gap-6">
             <ProjectCard
@@ -215,14 +285,21 @@ export default function Home() {
       {/* Experiences Section */}
       <section ref={experiencesRef} id="experiences" className="min-h-screen px-4 py-32">
         <div className="max-w-6xl mx-auto">
-          <h1 className="text-5xl font-bold mb-4 text-center">Experiences</h1>
-          <p className="text-gray-400 mb-24 text-center text-lg">
-            Check out my experiences and see the hands-on knowledge I've gained.
-          </p>
+          <motion.div
+            initial={{ y: 20, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-5xl font-bold mb-4 text-center">Experiences</h1>
+            <p className="text-gray-400 mb-24 text-center text-lg">
+              Check out my experiences and see the hands-on knowledge I've gained.
+            </p>
+          </motion.div>
           
           <ExperiencesCarousel />
         </div>
       </section>
-    </div>
+    </motion.div>
   )
 }
