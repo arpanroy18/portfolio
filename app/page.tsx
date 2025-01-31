@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
-import { ProjectCard } from '@/components/project-card'
 import { ExperiencesCarousel } from '@/components/experiences-carousel'
 import { NavBar } from '@/components/nav-bar'
 import { FaGithub, FaLinkedin, FaChevronDown, FaEnvelope } from 'react-icons/fa'
@@ -257,26 +256,30 @@ export default function Home() {
             <ProjectCard
               title="Neural Network Visualizer"
               description="Built an interactive neural network visualizer using HTML, CSS, and JavaScript to demonstrate key concepts like gradient descent and activation functions."
-              imageUrl="./NN-visualizer-image.png"
+              imageUrl="./visualizer.png"
               alt="Neural Network Visualization"
+              className="object-cover w-full h-full"
             />
             <ProjectCard
               title="Diabetes Prediction Model"
               description="Developed a prediction model using Python, Scikit-Learn, and Pandas to detect diabetes. Used existing data from PIMA Indian Diabetes Dataset to train the model."
-              imageUrl="./diabetes-prediction.png"
+              imageUrl="./diabetes.jpg"
               alt="Diabetes Prediction Model"
+              className="object-cover w-full h-64"
             />
             <ProjectCard
               title="Human Detection Image Classifier"
               description="Developed a machine learning-based image classifier for detecting human presence in images using computer vision techniques."
               imageUrl="./human-detection.png"
               alt="Human Detection Classifier"
+              className="object-cover w-full h-64"
             />
             <ProjectCard
               title="Flashcards Study App"
               description="Built a flashcards study app to enable users to efficiently learn and memorize information through spaced repetition."
               imageUrl="./flashy.png"
               alt="Flashcards Study App"
+              className="object-cover w-full h-64"
             />
           </div>
         </div>
@@ -300,6 +303,35 @@ export default function Home() {
           <ExperiencesCarousel />
         </div>
       </section>
+    </motion.div>
+  )
+}
+
+function ProjectCard({ title, description, imageUrl, alt }: ProjectCardProps) {
+  return (
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -5 }}
+      transition={{ duration: 0.3 }}
+      className="overflow-hidden rounded-2xl bg-gradient-to-b from-black to-black/50 border border-gray-800 flex flex-col h-full transform hover:shadow-xl"
+    >
+      {/* Adjusted aspect ratio and added relative positioning */}
+      <div className="relative w-full" style={{ aspectRatio: '16/9' }}>
+        <Image
+          src={imageUrl}
+          alt={alt}
+          fill
+          className="object-cover object-center transition-transform duration-300 hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority // Added for better loading of visible images
+        />
+      </div>
+      <div className="p-6 bg-[#1e2761]/80 flex-1"> {/* Increased padding */}
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+      </div>
     </motion.div>
   )
 }
