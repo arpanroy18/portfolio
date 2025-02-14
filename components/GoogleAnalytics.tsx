@@ -4,8 +4,12 @@
 import Script from 'next/script'
 
 export function GoogleAnalytics() {
-  const GA_MEASUREMENT_ID = 'G-2KK3XXKRDK'
-  
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID; // Use environment variable
+
+  if (!GA_MEASUREMENT_ID) {
+    return null; // Don't render if ID is not set
+  }
+
   return (
     <>
       <Script
@@ -22,5 +26,5 @@ export function GoogleAnalytics() {
         `}
       </Script>
     </>
-  )
+  );
 }
