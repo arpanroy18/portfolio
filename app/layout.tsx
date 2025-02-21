@@ -8,6 +8,10 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Arpan's Portfolio",
   description: "Personal portfolio website",
+  icons: {
+    icon: '/ar-logo.png',
+    apple: '/ar-logo.png',
+  },
 }
 
 export default function RootLayout({
@@ -17,11 +21,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      </head>
+      <body className={`${inter.className} overflow-x-hidden`}>
         {children}
         <GoogleAnalytics />
       </body>
     </html>
   )
 }
-

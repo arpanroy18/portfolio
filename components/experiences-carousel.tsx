@@ -58,7 +58,7 @@ export function ExperiencesCarousel() {
   }
 
   return (
-    <div className="relative w-full h-[600px] flex items-center justify-center"> {/* Reduced height */}
+    <div className="relative w-full h-[500px] sm:h-[650px] flex items-center justify-center">
       {/* Center experience - now with description */}
       <ExperienceCircle
         title={experiences[activeIndex].title}
@@ -92,7 +92,7 @@ export function ExperiencesCarousel() {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute left-0 top-1/2 -translate-y-1/2 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 hover:text-white"
+        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-20 bg-zinc-800/80 text-zinc-200 hover:bg-zinc-700 hover:text-white shadow-lg"
         onClick={rotateLeft}
       >
         <ChevronLeft className="h-6 w-6" />
@@ -100,7 +100,7 @@ export function ExperiencesCarousel() {
       <Button
         variant="ghost"
         size="icon"
-        className="absolute right-0 top-1/2 -translate-y-1/2 bg-zinc-800 text-zinc-200 hover:bg-zinc-700 hover:text-white"
+        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-20 bg-zinc-800/80 text-zinc-200 hover:bg-zinc-700 hover:text-white shadow-lg"
         onClick={rotateRight}
       >
         <ChevronRight className="h-6 w-6" />

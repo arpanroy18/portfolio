@@ -6,6 +6,15 @@ import { ExperiencesCarousel } from '@/components/experiences-carousel'
 import { NavBar } from '@/components/nav-bar'
 import { FaGithub, FaLinkedin, FaChevronDown, FaEnvelope } from 'react-icons/fa'
 import { motion } from 'framer-motion'
+import { MobileExperienceList } from '@/components/mobile-experience-list'
+
+interface ProjectCardProps {
+  title: string;
+  description: string;
+  imageUrl: string;
+  alt: string;
+  className?: string;
+}
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -117,8 +126,8 @@ export default function Home() {
         id="home" 
         className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative"
       >
-        <nav className="mb-7">
-          <ul className="flex items-center justify-center gap-8">
+        <nav className="mb-7 w-full px-4">
+          <ul className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
             <motion.li
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -161,18 +170,19 @@ export default function Home() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="flex items-center justify-center gap-8 mb-8"
+          className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-8"
         >
-          <h1 className="text-8xl font-bold tracking-tight">
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight mt-4 md:mt-0">
             Arpan Roy
           </h1>
-          <div className="relative w-32 h-32">
+          <div className="relative w-24 h-24 md:w-32 md:h-32">
             <Image
               src="./portfolio_image.png"
               alt="Avatar"
               width={128}
               height={128}
               className="rounded-full"
+              priority
             />
           </div>
         </motion.div>
@@ -186,7 +196,7 @@ export default function Home() {
           <p className="text-xl text-gray-300">
             Math @ University of Waterloo
           </p>
-          <p className="text-gray-400 whitespace-nowrap inline-block">
+          <p className="text-gray-400 text-sm md:text-base px-4 md:px-0">
             I'm currently working on autonomy software for drones at{' '}
             <a href="#" className="text-blue-400 hover:text-blue-300">
               Waterloo Aerial Robotics Group
@@ -238,17 +248,18 @@ export default function Home() {
       </motion.section>
 
       {/* Projects Section */}
-      <section ref={projectsRef} id="projects" className="min-h-screen px-4 py-20">
+      <section ref={projectsRef} id="projects" className="min-h-screen px-4 py-16 sm:py-20">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
+            className="text-center sm:text-left"
           >
-            <h2 className="text-4xl font-bold mb-4">Projects</h2>
-            <p className="text-gray-400 mb-12">
-              My hobby projects are pretty random—just things that I am interested in.
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Projects</h2>
+            <p className="text-gray-400 mb-8 sm:mb-12 text-sm sm:text-base">
+               Take a look at some of my projects. I always try to make projects that I can use and hopefully others can use as well.
             </p>
           </motion.div>
           
@@ -286,21 +297,58 @@ export default function Home() {
       </section>
 
       {/* Experiences Section */}
-      <section ref={experiencesRef} id="experiences" className="min-h-screen px-4 py-32">
-        <div className="max-w-6xl mx-auto">
+      <section ref={experiencesRef} id="experiences" className="min-h-screen px-4 py-12 sm:py-24">
+        <div className="max-w-6xl mx-auto space-y-8 sm:space-y-16">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h1 className="text-5xl font-bold mb-4 text-center">Experiences</h1>
-            <p className="text-gray-400 mb-24 text-center text-lg">
+            <h1 className="text-3xl sm:text-5xl font-bold mb-4 text-center">Experiences</h1>
+            <p className="text-gray-400 mb-12 sm:mb-16 text-center text-base sm:text-lg px-4 sm:px-0">
               Check out my experiences and see the hands-on knowledge I've gained.
             </p>
           </motion.div>
           
-          <ExperiencesCarousel />
+          {/* Mobile Experience List (below md) / Desktop Carousel (md and above) */}
+          <div className="block md:hidden">
+            <MobileExperienceList experiences={[
+              {
+                title: "Waterloo Aerial Robotics Group",
+                date: "Oct 2024 - Present",
+                description: "Enhanced drone image processing and system reliability through bug resolution, pipeline optimization, and automation.",
+                role: "Software Engineer"
+              },
+              {
+                title: "CS Base",
+                date: "Apr 2023 - Aug 2024",
+                description: "Led programming instruction and curriculum development, introducing students to advanced programming concepts.",
+                role: "Lead Programming Teacher"
+              },
+              {
+                title: "First Robotics",
+                date: "Nov 2022 - Mar 2023",
+                description: "Taught Java programming, enabling team members to develop and enhance robot functionality.",
+                role: "Programming Teacher"
+              },
+              {
+                title: "Code 4 Tomorrow",
+                date: "July 2023 - Mar 2024",
+                description: "Supported organizational operations and documentation management for collaborative coding initiatives.",
+                role: "Documentation Team"
+              },
+              {
+                title: "Project Empower",
+                date: "Feb 2023 - Mar 2024",
+                description: "Facilitated community outreach by building partnerships and fostering collaboration with external organizations.",
+                role: "Community Liaison"
+              }
+            ]} />
+          </div>
+          <div className="hidden md:block">
+            <ExperiencesCarousel />
+          </div>
         </div>
       </section>
     </motion.div>
@@ -328,9 +376,9 @@ function ProjectCard({ title, description, imageUrl, alt }: ProjectCardProps) {
           priority // Added for better loading of visible images
         />
       </div>
-      <div className="p-6 bg-[#1e2761]/80 flex-1"> {/* Increased padding */}
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
+      <div className="p-4 sm:p-6 bg-[#1e2761]/80 flex-1">
+        <h3 className="text-lg sm:text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">{description}</p>
       </div>
     </motion.div>
   )
