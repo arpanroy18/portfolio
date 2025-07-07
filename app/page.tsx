@@ -172,7 +172,7 @@ export default function Home() {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-center text-white font-display">
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-center text-white font-display hover:scale-110 duration-1000">
             Arpan Roy
           </h1>
         </motion.div>
