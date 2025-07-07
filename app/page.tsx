@@ -170,21 +170,11 @@ export default function Home() {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-8"
+          className="mb-8"
         >
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight mt-4 md:mt-0">
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-center">
             Arpan Roy
           </h1>
-          <div className="relative w-24 h-24 md:w-32 md:h-32">
-            <Image
-              src="./portfolio_image.png"
-              alt="Avatar"
-              width={128}
-              height={128}
-              className="rounded-full"
-              priority
-            />
-          </div>
         </motion.div>
         
         <motion.div 
