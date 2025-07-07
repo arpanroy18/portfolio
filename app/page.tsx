@@ -172,7 +172,7 @@ export default function Home() {
           transition={{ delay: 0.4 }}
           className="mb-8"
         >
-          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-center">
+          <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-center text-white font-display">
             Arpan Roy
           </h1>
         </motion.div>

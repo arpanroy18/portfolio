@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'CalSans-SemiBold';
+  src: url('/fonts/CalSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 0, 0, 0;
@@ -22,5 +30,28 @@ body {
 .container {
   display: flex;
   gap: 2rem; /* Increase this value to add more space */
+}
+
+/* Custom styling for name display */
+.text-edge-outline {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.3);
+}
+
+.animate-title {
+  background: linear-gradient(45deg, #ffffff, #e5e7eb, #ffffff);
+  background-size: 200% 200%;
+  animation: gradient 3s ease infinite;
+}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom font display class */
+.font-display {
+  font-family: 'CalSans-SemiBold', 'Inter', sans-serif;
+  font-weight: 600;
 }
 
