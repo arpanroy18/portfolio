@@ -134,7 +134,7 @@ export default function Home() {
             >
               <button 
                 onClick={() => scrollToSection('projects')}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors font-display text-lg font-normal"
               >
                 Projects
               </button>
@@ -145,7 +145,7 @@ export default function Home() {
             >
               <button 
                 onClick={() => scrollToSection('experiences')}
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-gray-400 hover:text-white transition-colors font-display text-lg font-normal"
               >
                 Experiences
               </button>
@@ -158,7 +158,7 @@ export default function Home() {
                 href="./Arpan_Roy_Resume.pdf" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="px-4 py-2 border border-dashed border-gray-600 text-gray-400 hover:text-white hover:border-white transition-all"
+                className="px-4 py-2 border border-dashed border-gray-600 text-gray-400 hover:text-white hover:border-white transition-all font-display text-lg font-normal"
               >
                 Resume
               </a>
