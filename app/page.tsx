@@ -126,7 +126,7 @@ export default function Home() {
         id="home" 
         className="min-h-screen flex flex-col items-center justify-center text-center px-4 relative"
       >
-        <nav className="mb-7 w-full px-4">
+        <nav className="mb-12 w-full px-4">
           <ul className="flex flex-wrap items-center justify-center gap-4 md:gap-8">
             <motion.li
               whileHover={{ scale: 1.05 }}
